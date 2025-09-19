@@ -1,0 +1,22 @@
+{
+  "name": "dotenv-e-nodemailer",
+  "version": "1.0.0",
+  "description": "exercicio 04 dotenv e nodemailer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JS",
+    "node",
+    "express"
+  ],
+  "author": "Matheus Gaspar Menezes",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "nodemailer": "^7.0.6"
+  }
+}

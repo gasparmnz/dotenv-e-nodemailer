@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Produto</title>
+  <link rel="stylesheet" href="/css/cadastrar_produto.css">
+</head>
+<body>
+  <main>
+    <h1>Formulário</h1>
+
+    <form>
+      <fieldset>
+        <legend>Informações do formulário</legend>
+
+        <label for="nome">Nome: </label>
+        <input type="text" id="nome" name="nome" placeholder="DIgite seu nome:" required>
+
+        <label for="descricao">Email:</label>
+        <textarea id="descricao" name="descricao" rows="3" placeholder="Digite seu email:" required></textarea>
+
+        <label for="preco">Telefone</label>
+        <input type="number" id="preco" name="preco" step="0.01" placeholder="Digite seu telefone:" required>
+
+        <label for="assunto">Assunto</label>
+        <input type="text" id="assunto" name="assunto" step="0.01" placeholder="Digite o assunto desta mensagem:" required>
+
+        <label for="mensagem">Mensagem: </label>
+        <input type="text" id="mensagem" name="mensagem" placeholder="Escreva sua mensagem:" required>
+
+    
+
+
+      <section class="acoes">
+        <button type="button" class="salvar" onclick="window.location.href='/listaprodutos'">
+          Avançar
+      </button>
+        <button type="button" class="cancelar" onclick="window.location.href='/listaprodutos'">Cancelar</button>
+      </section>
+    </form>
+  </main>
+</body>
+</html>
