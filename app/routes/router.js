@@ -1,27 +1,5 @@
 var express = require("express");
 var router = express.Router();
-
-router.get("/", (req, res) => {
-    res.render("pages/cadastrar_produto");
-    const mailOptions = {
-  from: "gasparzin189@gmail.com",
-  to: "gasparzin189@gmail.com",
-  subject: "envio do formulário",
-  text: "mensagem em formato texto",
-  html: "<h1>mensagem em formato HTML</h1>"
-};
-
-transporter.sendMail(mailOptions, (error, info) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log(info);
-
-    console.log("email enviado")
-  }
-});
-  });
-
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
@@ -31,12 +9,41 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS
   },
   tls: {
-    secure: false,
-    ignoreTLS: true,
     rejectUnauthorized: false,
   }
 });
+router.get("/", (req, res) => {
+    res.render("pages/cadastrar_produto");
+});
 
+router.post("/enviar-formulario", (req, res) => {
+    const { nome, email, telefone, assunto, mensagem } = req.body;
 
+    const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER,
+        replyTo: email,
+        subject: `Novo Contato: ${assunto}`,
+        html: `
+            <h1>Nova mensagem do formulário!</h1>
+            <p><strong>Nome:</strong> ${nome}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Telefone:</strong> ${telefone}</p>
+            <hr>
+            <h2>Mensagem:</h2>
+            <p>${mensagem}</p>
+        `
+    };
 
-  module.exports = router;
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log("Erro ao enviar e-mail:", error);
+            res.status(500).send("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.");
+        } else {
+            console.log("E-mail enviado com sucesso:", info.response);
+            res.send("<h1>Mensagem enviada com sucesso!</h1><a href='/'>Voltar</a>");
+        }
+    });
+});
+
+module.exports = router;
