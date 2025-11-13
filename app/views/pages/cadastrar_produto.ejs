@@ -10,20 +10,17 @@
   <main>
     <h1>Formulário</h1>
 
-    <!-- 
-      CORREÇÃO: Adicionado method="POST" e action="/enviar-formulario".
-      Isso diz ao navegador para enviar os dados do formulário para a rota /enviar-formulario no seu servidor.
     -->
     <form action="/enviar-formulario" method="POST">
       <fieldset>
         <legend>Informações do formulário</legend>
 
-        <!-- Mantive os campos como você criou, mas corrigi os names para serem mais claros -->
+   
         <label for="nome">Nome: </label>
         <input type="text" id="nome" name="nome" placeholder="Digite seu nome:" required>
 
         <label for="email">Email:</label>
-        <!-- Usei input type="email" para validação básica do navegador -->
+        
         <input type="email" id="email" name="email" placeholder="Digite seu email:" required>
 
         <label for="telefone">Telefone</label>
@@ -33,15 +30,12 @@
         <input type="text" id="assunto" name="assunto" placeholder="Digite o assunto desta mensagem:" required>
 
         <label for="mensagem">Mensagem: </label>
-        <!-- Usei <textarea> para a mensagem, que é mais apropriado -->
+      
         <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem:" required></textarea>
       </fieldset>
 
       <section class="acoes">
-        <!-- 
-          CORREÇÃO: O botão principal agora é type="submit". 
-          Ele irá acionar o envio do formulário (action e method definidos acima).
-        -->
+        
         <button type="submit" class="salvar">
           Enviar Formulário
         </button>
